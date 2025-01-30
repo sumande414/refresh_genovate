@@ -1,0 +1,4 @@
+Flask
+pymysql
+imap-tools
+python-dotenv
