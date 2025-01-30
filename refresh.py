@@ -71,11 +71,15 @@ def fetch_and_store_emails():
                 mailbox.flag(msg.uid, [r'\Seen'], True)
                 unread_emails.append(msg.subject)
 
-            return jsonify({"message": "Emails fetched and stored successfully", "emails": unread_emails}), 200
+            response = jsonify({"message": "Emails fetched and stored successfully", "emails": unread_emails}), 200
+            response.headers.add('Access-Control-Allow-Origin', '*')
+            return response
 
     except Exception as e:
         print(f"Error: {e}")
-        return jsonify({"message": "An error occurred while fetching emails", "error": str(e)}), 500
+        response = jsonify({"message": "An error occurred while fetching emails", "error": str(e)}), 500
+        response.headers.add('Access-Control-Allow-Origin', '*')
+        return response
 
 if __name__ == "__main__":
     app.run(debug=True, host='0.0.0.0', port=5000)
