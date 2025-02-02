@@ -4,12 +4,12 @@ from imap_tools import MailBox, AND
 from dotenv import load_dotenv
 import os
 
-# Load environment variables from the .env file
+
 load_dotenv()
 
 app = Flask(__name__)
 
-# Fetch credentials from environment variables
+
 IMAP_SERVER = os.getenv("IMAP_SERVER")
 EMAIL_ACCOUNT = os.getenv("EMAIL_ACCOUNT")
 EMAIL_PASSWORD = os.getenv("EMAIL_PASSWORD")
